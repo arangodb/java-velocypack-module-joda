@@ -3,6 +3,8 @@
 
 # ArangoDB VelocyPack Java Module Joda-Time
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.arangodb/velocypack-module-joda/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.arangodb/velocypack-module-joda)
+
 Joda-Time module for [Java VelocyPack](https://github.com/arangodb/java-velocypack).
 
 Added support for:
