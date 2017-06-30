@@ -32,7 +32,7 @@ import com.arangodb.velocypack.exception.VPackException;
 import com.arangodb.velocypack.internal.VPackSerializers;
 
 /**
- * @author Mark - mark at arangodb.com
+ * @author Mark Vollmary
  *
  */
 public class VPackJodaSerializers {
