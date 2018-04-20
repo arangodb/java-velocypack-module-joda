@@ -29,7 +29,7 @@ import com.arangodb.velocypack.VPackDeserializationContext;
 import com.arangodb.velocypack.VPackDeserializer;
 import com.arangodb.velocypack.VPackSlice;
 import com.arangodb.velocypack.exception.VPackException;
-import com.arangodb.velocypack.internal.VPackDeserializers;
+import com.arangodb.velocypack.module.joda.internal.util.JodaTimeUtil;
 
 /**
  * @author Mark Vollmary
@@ -43,7 +43,8 @@ public class VPackJodaDeserializers {
 			final VPackSlice parent,
 			final VPackSlice vpack,
 			final VPackDeserializationContext context) throws VPackException {
-			return new Instant(VPackDeserializers.DATE.deserialize(parent, vpack, context).getTime());
+			return vpack.isString() ? JodaTimeUtil.parseInstant(vpack.getAsString())
+					: new Instant(vpack.getAsDate().getTime());
 		}
 	};
 
@@ -53,7 +54,8 @@ public class VPackJodaDeserializers {
 			final VPackSlice parent,
 			final VPackSlice vpack,
 			final VPackDeserializationContext context) throws VPackException {
-			return new DateTime(VPackDeserializers.DATE.deserialize(parent, vpack, context).getTime());
+			return vpack.isString() ? JodaTimeUtil.parseDateTime(vpack.getAsString())
+					: new DateTime(vpack.getAsDate().getTime());
 		}
 	};
 
@@ -63,7 +65,8 @@ public class VPackJodaDeserializers {
 			final VPackSlice parent,
 			final VPackSlice vpack,
 			final VPackDeserializationContext context) throws VPackException {
-			return new LocalDate(VPackDeserializers.DATE.deserialize(parent, vpack, context).getTime());
+			return vpack.isString() ? JodaTimeUtil.parseLocalDate(vpack.getAsString())
+					: new LocalDate(vpack.getAsDate().getTime());
 		}
 	};
 
@@ -73,7 +76,8 @@ public class VPackJodaDeserializers {
 			final VPackSlice parent,
 			final VPackSlice vpack,
 			final VPackDeserializationContext context) throws VPackException {
-			return new LocalDateTime(VPackDeserializers.DATE.deserialize(parent, vpack, context).getTime());
+			return vpack.isString() ? JodaTimeUtil.parseLocalDateTime(vpack.getAsString())
+					: new LocalDateTime(vpack.getAsDate().getTime());
 		}
 	};
 

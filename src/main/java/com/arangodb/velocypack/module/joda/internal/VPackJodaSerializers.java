@@ -29,7 +29,7 @@ import com.arangodb.velocypack.VPackBuilder;
 import com.arangodb.velocypack.VPackSerializationContext;
 import com.arangodb.velocypack.VPackSerializer;
 import com.arangodb.velocypack.exception.VPackException;
-import com.arangodb.velocypack.internal.VPackSerializers;
+import com.arangodb.velocypack.module.joda.internal.util.JodaTimeUtil;
 
 /**
  * @author Mark Vollmary
@@ -44,7 +44,7 @@ public class VPackJodaSerializers {
 			final String attribute,
 			final Instant value,
 			final VPackSerializationContext context) throws VPackException {
-			VPackSerializers.DATE.serialize(builder, attribute, value.toDate(), context);
+			builder.add(attribute, JodaTimeUtil.format(value));
 		}
 	};
 
@@ -55,7 +55,7 @@ public class VPackJodaSerializers {
 			final String attribute,
 			final DateTime value,
 			final VPackSerializationContext context) throws VPackException {
-			VPackSerializers.DATE.serialize(builder, attribute, value.toDate(), context);
+			builder.add(attribute, JodaTimeUtil.format(value));
 		}
 	};
 
@@ -66,7 +66,7 @@ public class VPackJodaSerializers {
 			final String attribute,
 			final LocalDate value,
 			final VPackSerializationContext context) throws VPackException {
-			VPackSerializers.DATE.serialize(builder, attribute, value.toDate(), context);
+			builder.add(attribute, JodaTimeUtil.format(value));
 		}
 	};
 
@@ -77,7 +77,7 @@ public class VPackJodaSerializers {
 			final String attribute,
 			final LocalDateTime value,
 			final VPackSerializationContext context) throws VPackException {
-			VPackSerializers.DATE.serialize(builder, attribute, value.toDate(), context);
+			builder.add(attribute, JodaTimeUtil.format(value));
 		}
 	};
 

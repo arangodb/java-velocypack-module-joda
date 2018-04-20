@@ -27,6 +27,7 @@ import static org.junit.Assert.assertThat;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.joda.time.DateTime;
 import org.joda.time.Instant;
@@ -46,7 +47,15 @@ import com.arangodb.velocypack.ValueType;
  */
 public class VPackSerializeDeserializeTest {
 
-	private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");// ISO 8601
+	private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+	private static final DateFormat DATE_FORMAT_LOCAL_DATE = new SimpleDateFormat("yyyy-MM-dd");
+	private static final DateFormat DATE_FORMAT_LOCAL_DATE_TIME = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+	private static final DateFormat DATE_FORMAT_DATE_TIME = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	// private static final DateFormat DATE_FORMAT_ZONED_DATE_TIME = new
+	// SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	static {
+		DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));
+	}
 
 	private static VPack vp;
 
@@ -116,11 +125,12 @@ public class VPackSerializeDeserializeTest {
 		assertThat(vpack.get("instant").isString(), is(true));
 		assertThat(vpack.get("instant").getAsString(), is(DATE_FORMAT.format(new Date(1474988621))));
 		assertThat(vpack.get("dateTime").isString(), is(true));
-		assertThat(vpack.get("dateTime").getAsString(), is(DATE_FORMAT.format(new Date(1474988621))));
+		assertThat(vpack.get("dateTime").getAsString(), is(DATE_FORMAT_DATE_TIME.format(new Date(1474988621))));
 		assertThat(vpack.get("localDate").isString(), is(true));
-		assertThat(vpack.get("localDate").getAsString(), is(DATE_FORMAT.format(new Date(70, 0, 18))));
+		assertThat(vpack.get("localDate").getAsString(), is(DATE_FORMAT_LOCAL_DATE.format(new Date(70, 0, 18))));
 		assertThat(vpack.get("localDateTime").isString(), is(true));
-		assertThat(vpack.get("localDateTime").getAsString(), is(DATE_FORMAT.format(new Date(1474988621))));
+		assertThat(vpack.get("localDateTime").getAsString(),
+			is(DATE_FORMAT_LOCAL_DATE_TIME.format(new Date(1474988621))));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -148,14 +158,15 @@ public class VPackSerializeDeserializeTest {
 		final VPackBuilder builder = new VPackBuilder();
 		builder.add(ValueType.OBJECT);
 		builder.add("instant", DATE_FORMAT.format(new Date(1475062216)));
-		builder.add("dateTime", DATE_FORMAT.format(new Date(1475062216)));
-		builder.add("localDate", DATE_FORMAT.format(new Date(70, 0, 18)));
-		builder.add("localDateTime", DATE_FORMAT.format(new Date(1475062216)));
+		builder.add("dateTime", DATE_FORMAT_DATE_TIME.format(new Date(1475062216)));
+		builder.add("localDate", DATE_FORMAT_LOCAL_DATE.format(new Date(70, 0, 18)));
+		builder.add("localDateTime", DATE_FORMAT_LOCAL_DATE_TIME.format(new Date(1475062216)));
 		builder.close();
 
 		final TestEntityDate entity = vp.deserialize(builder.slice(), TestEntityDate.class);
 		assertThat(entity, is(notNullValue()));
 		assertThat(entity.instant, is(new Instant(1475062216)));
+		assertThat(entity.dateTime, is(new DateTime(1475062216)));
 		assertThat(entity.dateTime, is(new DateTime(1475062216)));
 		assertThat(entity.localDate, is(new LocalDate(1475062216)));
 		assertThat(entity.localDateTime, is(new LocalDateTime(1475062216)));
