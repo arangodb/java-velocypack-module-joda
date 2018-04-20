@@ -51,8 +51,7 @@ public class VPackSerializeDeserializeTest {
 	private static final DateFormat DATE_FORMAT_LOCAL_DATE = new SimpleDateFormat("yyyy-MM-dd");
 	private static final DateFormat DATE_FORMAT_LOCAL_DATE_TIME = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
 	private static final DateFormat DATE_FORMAT_DATE_TIME = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-	// private static final DateFormat DATE_FORMAT_ZONED_DATE_TIME = new
-	// SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+
 	static {
 		DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));
 	}
