@@ -52,7 +52,7 @@ public final class JodaTimeUtil {
 	}
 
 	public static DateTime parseDateTime(final String source) {
-		return DateTime.parse(source, ISODateTimeFormat.dateTime());
+		return DateTime.parse(source);
 	}
 
 	public static LocalDate parseLocalDate(final String source) {

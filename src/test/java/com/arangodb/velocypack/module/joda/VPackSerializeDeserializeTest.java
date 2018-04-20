@@ -30,6 +30,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.Instant;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
@@ -72,7 +73,7 @@ public class VPackSerializeDeserializeTest {
 		public TestEntityDate(final long millis) {
 			super();
 			instant = new Instant(millis);
-			dateTime = new DateTime(millis);
+			dateTime = new DateTime(millis, DateTimeZone.forOffsetHours(1));
 			localDate = new LocalDate(millis);
 			localDateTime = new LocalDateTime(millis);
 		}
@@ -165,8 +166,7 @@ public class VPackSerializeDeserializeTest {
 		final TestEntityDate entity = vp.deserialize(builder.slice(), TestEntityDate.class);
 		assertThat(entity, is(notNullValue()));
 		assertThat(entity.instant, is(new Instant(1475062216)));
-		assertThat(entity.dateTime, is(new DateTime(1475062216)));
-		assertThat(entity.dateTime, is(new DateTime(1475062216)));
+		assertThat(entity.dateTime, is(new DateTime(1475062216, DateTimeZone.forOffsetHours(1))));
 		assertThat(entity.localDate, is(new LocalDate(1475062216)));
 		assertThat(entity.localDateTime, is(new LocalDateTime(1475062216)));
 	}
