@@ -1,4 +1,3 @@
-
 ![ArangoDB-Logo](https://docs.arangodb.com/assets/arangodb_logo_2016_inverted.png)
 
 # ArangoDB VelocyPack Java Module Joda-Time
@@ -8,11 +7,11 @@
 Joda-Time module for [Java VelocyPack](https://github.com/arangodb/java-velocypack).
 
 Added support for:
-* org.joda.time.DateTime;
-* org.joda.time.Instant;
-* org.joda.time.LocalDate;
-* org.joda.time.LocalDateTime;
 
+- org.joda.time.DateTime;
+- org.joda.time.Instant;
+- org.joda.time.LocalDate;
+- org.joda.time.LocalDateTime;
 
 ## Maven
 
@@ -47,6 +46,11 @@ mvn clean install -DskipTests=true -Dgpg.skip=true -Dmaven.javadoc.skip=true -B
 
 ## Usage / registering module
 
-``` Java
+```Java
 VPack vpack = new VPack.Builder().registerModule(new VPackJodaModule()).build();
-``` 
+```
+
+## Learn more
+
+- [ArangoDB](https://www.arangodb.com/)
+- [Changelog](ChangeLog.md)

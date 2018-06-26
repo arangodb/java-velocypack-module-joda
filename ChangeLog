@@ -1,7 +1,0 @@
-v1.1.1 (2018-04-20)
----------------------------
-* fixed DateTime parsing
-
-v1.1.0 (2018-04-20)
----------------------------
-* changed parsing (use of ISODateTimeFormat instead SimpleDateFormatter)
