@@ -17,3 +17,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Changed
 
 - changed parsing (use of ISODateTimeFormat instead SimpleDateFormatter)
+
+[unreleased]: https://github.com/arangodb/spring-data/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/arangodb/spring-data/compare/1.1.0...1.1.1
