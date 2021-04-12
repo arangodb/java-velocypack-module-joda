@@ -1,5 +1,12 @@
 ![ArangoDB-Logo](https://docs.arangodb.com/assets/arangodb_logo_2016_inverted.png)
 
+# [DEPRECATED]: `velocypack-module-joda` has been deprecated.
+
+Please consider using [jackson-dataformat-velocypack](https://github.com/arangodb/jackson-dataformat-velocypack)
+in combination with [jackson-datatype-joda](https://github.com/FasterXML/jackson-datatype-joda) instead. For usage in
+the ArangoDB Java driver, refer to the
+official [serialization documentation](https://www.arangodb.com/docs/stable/drivers/java-reference-serialization.html).
+
 # ArangoDB VelocyPack Java Module Joda-Time
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.arangodb/velocypack-module-joda/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.arangodb/velocypack-module-joda)
@@ -19,11 +26,11 @@ To add the dependency to your project with maven, add the following code to your
 
 ```XML
 <dependencies>
-  <dependency>
-    <groupId>com.arangodb</groupId>
-    <artifactId>velocypack-module-joda</artifactId>
-    <version>1.0.0</version>
-  </dependency>
+    <dependency>
+        <groupId>com.arangodb</groupId>
+        <artifactId>velocypack-module-joda</artifactId>
+        <version>1.0.0</version>
+    </dependency>
 </dependencies>
 ```
 
@@ -31,10 +38,10 @@ If you want to test with a snapshot version (e.g. 1.0.0-SNAPSHOT), add the stagi
 
 ```XML
 <repositories>
-  <repository>
-    <id>arangodb-snapshots</id>
-    <url>https://oss.sonatype.org/content/groups/staging</url>
-  </repository>
+    <repository>
+        <id>arangodb-snapshots</id>
+        <url>https://oss.sonatype.org/content/groups/staging</url>
+    </repository>
 </repositories>
 ```
 
