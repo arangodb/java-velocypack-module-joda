@@ -7,6 +7,8 @@ in combination with [jackson-datatype-joda](https://github.com/FasterXML/jackson
 the ArangoDB Java driver, refer to the
 official [serialization documentation](https://www.arangodb.com/docs/stable/drivers/java-reference-serialization.html).
 
+---
+
 # ArangoDB VelocyPack Java Module Joda-Time
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.arangodb/velocypack-module-joda/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.arangodb/velocypack-module-joda)
